@@ -10,7 +10,7 @@
     <ol>
         <li>SELECT * FROM `students` WHERE `date_of_birth` >= '1990-01-01' AND `date_of_birth` <= '1990-12-31';</li>
         <li>SELECT * FROM `courses` WHERE `cfu` > 10;</li>
-        <li>SELECT * FROM `students` WHERE `date_of_birth` < '1994-01-01';</li>
+        <li>SELECT * FROM `students` WHERE `date_of_birth` <  CONCAT(YEAR(CURRENT_DATE)-30,'-01-01');</li>
         <li>SELECT * FROM `courses` WHERE `period` = 'I semestre' AND `year` = 1;</li>
         <li>SELECT * FROM `exams` WHERE `date` = '2020-06-20' AND `hour` >= '14:00:00';</li>
         <li>SELECT * FROM `degrees` WHERE `level` = 'magistrale';</li>
