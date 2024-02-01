@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>query sql</title>
+    <style>
+        h2{
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h2>Query sql:</h2>
@@ -17,5 +22,22 @@
         <li>SELECT COUNT(*) FROM `departments` WHERE 1;</li>
         <li>SELECT * FROM `teachers` WHERE `phone`;</li>
     </ol>
+    <h2>Query sql GRUP BY</h2>
+    <ol>
+        <li>SELECT COUNT(`id`), YEAR(`enrolment_date`) FROM `students` GROUP BY YEAR(`enrolment_date`);</li>
+        <li>SELECT COUNT(`id`), `office_address` FROM `teachers` GROUP BY `office_address`;</li>
+        <li>SELECT AVG(`vote`), `exam_id` AS `media_voti` FROM `exam_student` GROUP BY `exam_id`;</li>
+        <li>SELECT COUNT(`id`), `department_id` FROM `degrees` GROUP BY `department_id`;</li>
+    </ol>
+    <h2>Query sql JOIN</h2>
+    <ol>
+        <li>SELECT s.* FROM students s INNER JOIN degrees d ON s.degree_id = d.id WHERE d.name = 'Corso di Laurea In Economia';</li>
+        <li>SELECT d.* FROM degrees d JOIN departments dp ON d.department_id = dp.id WHERE d.level = 'magistrale' AND dp.name = 'Dipartimento di Neuroscienze';</li>
+        <li>SELECT c.name FROM courses c JOIN course_teacher ct ON c.id = ct.course_id JOIN teachers t ON t.id = ct.teacher_id WHERE t.id = 44;</li>
+        <li>SELECT s.surname, s.name, d.name, dp.name FROM students s INNER JOIN degrees d ON s.degree_id = d.id JOIN departments dp ON dp.id = d.department_id ORDER BY s.surname ASC;</li>
+        <li>SELECT c.name, t.surname, t.name, d.name FROM courses c JOIN course_teacher ct ON ct.course_id = c.id JOIN teachers t ON t.id = ct.teacher_id JOIN degrees d ON d.id = c.degree_id</li>
+        <li>SELECT t.name, t.surname FROM teachers t JOIN course_teacher ct ON ct.teacher_id = t.id JOIN courses c ON c.id = ct.course_id JOIN degrees d ON d.id = c.degree_id JOIN departments dp ON dp.id = d.department_id WHERE dp.name = 'Dipartimento di matematica'</li>
+    </ol>
+        
 </body>
 </html>
